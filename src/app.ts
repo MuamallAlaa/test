@@ -5,14 +5,17 @@ import morgan from "morgan";
 import passport from "passport";
 import router from "./routers";
 import { errorHandler } from "./utils/errorHandler";
+import { API_PREFIX } from "./utils/config/config";
+
 // Init the app
 const app = express();
 
 //Security headers
 app.use(helmet());
-//  Compress requests
 
+//  Compress requests
 app.use(compression());
+
 // Parse incoming requests with JSON payload
 app.use(express.json());
 
@@ -25,9 +28,9 @@ app.use(morgan("dev"));
 app.use(passport.initialize());
 import "./apps/auth/strategies/jwt.strategy";
 import "./apps/auth/strategies/local.strategy";
-import { API_PREFIX } from "./utils/config/config";
 
 app.use(API_PREFIX, router);
+
 // Error handler
 app.use(errorHandler);
 
