@@ -14,4 +14,5 @@ router.post(
   passport.authenticate("signup", { session: false }),
   authController.signup
 );
+
 export { router as authRouter };
