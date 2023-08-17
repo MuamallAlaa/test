@@ -16,3 +16,10 @@ model User {
   username String @unique
   password String
 }
+
+model City {
+  id        Int    @id @default(autoincrement())
+  name      String
+  latitude  Float
+  longitude Float
+}

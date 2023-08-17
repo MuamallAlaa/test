@@ -2,10 +2,12 @@ import { Prisma, User } from ".prisma/client";
 import { prisma } from "../../prisma/prisma.service";
 
 export const reshape = (users: User[]) => {
+  // return users.map(({ password, ...safe }) => safe);
   return users.map(({ password, ...safe }) => safe);
 };
 
 export const findMany = async (args?: Prisma.UserFindManyArgs) => {
+  console.log(args);
   const users = await prisma.user.findMany(args);
   const count = await prisma.user.count({ where: args?.where });
   return [reshape(users), count];

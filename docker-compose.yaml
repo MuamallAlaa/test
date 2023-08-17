@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  postgis:
+    image: postgis/postgis
+    container_name: postgres-postgis
+    environment:
+      POSTGRES_DB: ibaity
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "4040:5432"
